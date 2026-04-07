@@ -1,0 +1,20 @@
+name: Deploy to AWS EC2
+
+on:
+    workflow_run:
+        workflows: ["Docker Image CI"]
+        types:
+            - completed
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name:Deploy to AWS EC2
+              run:sudo docker pull ramram27/devops10:latest
+            - name: delete old container
+              run: sudo docker rm -f devops10 || true
+            - name: run new container
+              run:sudo docker run -d --name devops10 -p 80:80 ramram27/devops10:
+                  
