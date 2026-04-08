@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-console.log
+console.log("Server is starting...");
 app.get('/', async(req , res) =>{
     res.send(`
         <div>
